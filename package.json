@@ -1,0 +1,83 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "findapi",
+        "scope": null,
+        "escapedName": "findapi",
+        "name": "findapi",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/mike/callback"
+    ],
+    [
+      {
+        "raw": "findapi",
+        "scope": null,
+        "escapedName": "findapi",
+        "name": "findapi",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/home/mike/callback"
+    ]
+  ],
+  "_from": "findapi",
+  "_inCache": true,
+  "_location": "/findapi",
+  "_nodeVersion": "7.7.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/findapi-0.0.2.tgz_1490143426340_0.08003330766223371"
+  },
+  "_npmUser": {
+    "name": "themikefuller",
+    "email": "mike@themike.org"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "findapi",
+    "scope": null,
+    "escapedName": "findapi",
+    "name": "findapi",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/findapi/-/findapi-0.0.2.tgz",
+  "_shasum": "1aca3c2f2ec18c5bb8dbd0706f79f374fbaf1c11",
+  "_shrinkwrap": null,
+  "_spec": "findapi",
+  "_where": "/home/mike/callback",
+  "author": "Mike Fuller",
+  "dependencies": {
+    "mongodb": "^2.2.25",
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "1aca3c2f2ec18c5bb8dbd0706f79f374fbaf1c11",
+    "tarball": "https://registry.npmjs.org/findapi/-/findapi-0.0.2.tgz"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    "themikefuller <mike@themike.org>"
+  ],
+  "name": "findapi",
+  "optionalDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.0.3",
+  "description": ""
+}
