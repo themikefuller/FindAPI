@@ -6,6 +6,15 @@ var paging = require('./paging');
 
 function FindAPI(collection,query,options,callback) {
 
+  // If callback is missing, try to use parameter in options position
+  if (options && !callback) {
+    if (typeof options == 'function') {
+      callback = options;
+      options = {};
+    }
+  }
+
+  // If no options are available, use some defaults
   if (!options || options == {}) {
     options = {
       links: true,
@@ -18,7 +27,7 @@ function FindAPI(collection,query,options,callback) {
   var f = options.fields || {};
   delete f._id;
 
-  // ID Field
+  // Set ID Field
   var id_field = options.id_field || "_id";
 
   // Query from options
@@ -27,10 +36,16 @@ function FindAPI(collection,query,options,callback) {
   // Trail
   var trail = options.trail || {};
 
-  // Query by ID
-  if (!q._id && !q.id && query.id) {
+  // Query by _id
+  if (id_field == "_id" && (query._id)) {
+    q._id = paging.makeID(query._id);
+    trail._id = q._id.toString();
+  }
+
+  // Query by "id"
+  if (id_field == "_id" && options.id && (query.id)) {
     q._id = paging.makeID(query.id);
-    trail.id = q._id.toString();
+    trail.id = query.id.toString();
   }
 
   // Query by Custom ID field
@@ -54,17 +69,18 @@ function FindAPI(collection,query,options,callback) {
   }
   trail = t.slice(0,-1);
 
-  // Link and Prelink
+  // Feed Prelink
   var prelink = options.prelink || '';
+
+  // Canonical Link
   var link = prelink;
-  if (options.link) {
-    link = options.link;
-  }
+
+  // Remove trailing slash from prelink
   if (prelink.substr(-1) == '/') {
     prelink = prelink.slice(0,-1);
   }
 
-  // Data Prelink
+  // Data Prelink - Prelink for the data objects
   var data_prelink = options.data_prelink || prelink;
   if (data_prelink.substr(-1) == '/') {
     data_prelink = data_prelink.slice(0,-1);
@@ -88,6 +104,8 @@ function FindAPI(collection,query,options,callback) {
   }
 
   // Single - Limit results to 1
+  // Do not include feed prelinks
+  // Do no include the meta count
   if (options.single) {
     options.limit = 1;
     options.links = false;
@@ -133,15 +151,37 @@ function FindAPI(collection,query,options,callback) {
       var docs = [];
       if (results) {
 
+        // Page Count (if meta and count is true in options)
+        if (options.count && options.meta) {
+          response.meta.page_count = results.length;
+        }
+
         // Loop thru the results and create response data
         for(var x = 0; x < results.length; x++) {
           docs[x] = {};
-          docs[x].id = results[x]._id.toString();
+
+          // Add a convenient string id field within the object (based on _id) if id does not exist
+          if (options.id) {
+            docs[x].id = results[x].id || results[x]._id.toString();
+          }
+
+          // Assign the type and remove old reference to clean up object display
           docs[x].type = results[x].type;
           delete results[x].type;
-          docs[x].link = data_prelink + "/" + results[x][id_field];
-          delete results[x]._id;
+
+          // if (options.link), Set the object's URL based on the data_prelink and ID field (options.id_field)
+          if (options.link) {
+            docs[x].link = data_prelink + "/" + results[x][id_field];
+          }
+
+          // Option to include or exclude the MongoDB _id field
+          if (options.mongoid == 0) {
+            delete results[x]._id;
+          }
+
+          // Assign the updated document to itself
           docs[x] = Object.assign(docs[x],results[x]);
+
         }
 
       }

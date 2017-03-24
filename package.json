@@ -23,15 +23,27 @@
         "type": "tag"
       },
       "/home/mike/callback"
+    ],
+    [
+      {
+        "raw": "findapi@0.0.3",
+        "scope": null,
+        "escapedName": "findapi",
+        "name": "findapi",
+        "rawSpec": "0.0.3",
+        "spec": "0.0.3",
+        "type": "version"
+      },
+      "/home/mike/callback"
     ]
   ],
-  "_from": "findapi",
+  "_from": "findapi@0.0.3",
   "_inCache": true,
   "_location": "/findapi",
   "_nodeVersion": "7.7.1",
   "_npmOperationalInternal": {
     "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/findapi-0.0.2.tgz_1490143426340_0.08003330766223371"
+    "tmp": "tmp/findapi-0.0.3.tgz_1490209481291_0.6154491191264242"
   },
   "_npmUser": {
     "name": "themikefuller",
@@ -40,33 +52,34 @@
   "_npmVersion": "4.1.2",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "findapi",
+    "raw": "findapi@0.0.3",
     "scope": null,
     "escapedName": "findapi",
     "name": "findapi",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "0.0.3",
+    "spec": "0.0.3",
+    "type": "version"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/findapi/-/findapi-0.0.2.tgz",
-  "_shasum": "1aca3c2f2ec18c5bb8dbd0706f79f374fbaf1c11",
+  "_resolved": "https://registry.npmjs.org/findapi/-/findapi-0.0.3.tgz",
+  "_shasum": "c3179762a58a77864a2184a8a51eaf849506ee08",
   "_shrinkwrap": null,
-  "_spec": "findapi",
+  "_spec": "findapi@0.0.3",
   "_where": "/home/mike/callback",
   "author": "Mike Fuller",
   "dependencies": {
     "mongodb": "^2.2.25",
     "urlencode": "^1.1.0"
   },
+  "description": "Find and organize MongoDB documents into paginated feeds",
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "1aca3c2f2ec18c5bb8dbd0706f79f374fbaf1c11",
-    "tarball": "https://registry.npmjs.org/findapi/-/findapi-0.0.2.tgz"
+    "shasum": "c3179762a58a77864a2184a8a51eaf849506ee08",
+    "tarball": "https://registry.npmjs.org/findapi/-/findapi-0.0.3.tgz"
   },
   "license": "MIT",
   "main": "index.js",
@@ -78,6 +91,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "0.0.3",
-  "description": ""
+  "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themikefuller/findapi.git"
+  },
+  "keywords": [
+    "find",
+    "mongodb",
+    "documents",
+    "paginate",
+    "pagination",
+    "api",
+    "feed"
+  ],
+  "bugs": {
+    "url": "https://github.com/themikefuller/findapi/issues"
+  },
+  "homepage": "https://github.com/themikefuller/findapi#readme"
 }
