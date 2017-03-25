@@ -151,11 +151,6 @@ function FindAPI(collection,query,options,callback) {
       var docs = [];
       if (results) {
 
-        // Page Count (if meta and count is true in options)
-        if (options.count && options.meta) {
-          response.meta.page_count = results.length;
-        }
-
         // Loop thru the results and create response data
         for(var x = 0; x < results.length; x++) {
           docs[x] = {};
