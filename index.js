@@ -123,6 +123,16 @@ function FindAPI(collection,query,options,callback) {
     // Limit
     var limit = paging.Limits(query,options);
 
+    // Meta paging information
+    if (response.meta && response.meta.count) {
+      if (parseInt(count / limit) == count /limit) {
+        response.meta.pages = parseInt(count / limit);
+      } else {
+        response.meta.pages = parseInt(count / limit) + 1;
+      }
+      response.meta.ppp = limit;
+    }
+
     // Set Page and Skip based on limit
     var page = 1;
     var skip = 0;
@@ -139,11 +149,6 @@ function FindAPI(collection,query,options,callback) {
     // Links
     if (options.links != 0) {
       response.links = paging.Pagination(count,page,limit,prelink,trail);
-      var canonical = link;
-      if (canonical.substr(-1) == '/') {
-        canonical = canonical.slice(0,-1);
-      }
-      response.links.canonical = canonical;
     }
 
     // Query
@@ -161,8 +166,10 @@ function FindAPI(collection,query,options,callback) {
           }
 
           // Assign the type and remove old reference to clean up object display
-          docs[x].type = results[x].type;
-          delete results[x].type;
+          if (docs[x].type) {
+            docs[x].type = results[x].type;
+            delete results[x].type;
+          }
 
           // if (options.link), Set the object's URL based on the data_prelink and ID field (options.id_field)
           if (options.link) {
