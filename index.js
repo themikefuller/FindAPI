@@ -166,7 +166,7 @@ function FindAPI(collection,query,options,callback) {
           }
 
           // Assign the type and remove old reference to clean up object display
-          if (docs[x].type) {
+          if (results[x].type) {
             docs[x].type = results[x].type;
             delete results[x].type;
           }
